@@ -8,6 +8,7 @@ Skills pessoais e reutilizáveis para compreender um produto, orientar sua arqui
 |---|---|---|
 | [`high-level-engineering`](high-level-engineering/MANUAL.md) | A necessidade de Produto precisa virar arquitetura, contratos e direção de implementação. | Contexto técnico atual, decisão arquitetural, impactos e validação. |
 | [`product-as-is`](product-as-is/MANUAL.md) | É necessário mapear o Produto que existe hoje antes de iniciar uma frente. | Inventário completo, jornadas, regras, evidências, cobertura e handoff. |
+| [`prd-from-discovery`](prd-from-discovery/MANUAL.md) | Discovery e decisões precisam virar um contrato de Produto verificável. | PRD no template definido, rastreabilidade, aceite e questões pendentes. |
 | [`product-engineering-readiness`](product-engineering-readiness/MANUAL.md) | Uma release, piloto ou expansão precisa de decisão de prontidão. | Veredito rastreável e lotes de ações prontos para aprovação. |
 
 ## Instalação no Claude Code
@@ -18,6 +19,7 @@ As pastas deste repositório são a fonte versionada. Para disponibilizá-las em
 mkdir -p ~/.claude/skills
 ln -s /Users/guilhermebraga/Documents/repos/claude-product-engineering-skills/high-level-engineering ~/.claude/skills/high-level-engineering
 ln -s /Users/guilhermebraga/Documents/repos/claude-product-engineering-skills/product-as-is ~/.claude/skills/product-as-is
+ln -s /Users/guilhermebraga/Documents/repos/claude-product-engineering-skills/prd-from-discovery ~/.claude/skills/prd-from-discovery
 ln -s /Users/guilhermebraga/Documents/repos/claude-product-engineering-skills/product-engineering-readiness ~/.claude/skills/product-engineering-readiness
 ```
 
@@ -28,6 +30,7 @@ O comando de cada skill vem do nome de sua pasta:
 ```text
 /high-level-engineering
 /product-as-is
+/prd-from-discovery
 /product-engineering-readiness
 ```
 
@@ -38,8 +41,9 @@ O Claude também pode carregar uma skill automaticamente quando a solicitação 
 As skills podem ser usadas isoladamente. Para uma iniciativa completa, a sequência típica é:
 
 1. `/product-as-is` para estabelecer o Produto existente com evidências.
-2. `/high-level-engineering` para desenhar ou revisar a direção técnica da mudança.
-3. `/product-engineering-readiness` para confrontar o lançamento pretendido com Produto, Software e evidências atuais.
+2. `/prd-from-discovery` para transformar o Discovery e decisões em requisitos e aceite de Produto.
+3. `/high-level-engineering` para desenhar ou revisar a direção técnica da mudança.
+4. `/product-engineering-readiness` para confrontar o lançamento pretendido com Produto, Software e evidências atuais.
 
 O resultado de uma skill é entrada opcional para a próxima. Cada skill revalida contexto e não trata a conclusão de outro agente como prova atual automática.
 
@@ -58,4 +62,3 @@ Use os dois passos nesta ordem. Aguarde a confirmação de que a sessão está s
 - Mantenha decisões duráveis nos documentos canônicos do projeto analisado.
 - Não inclua segredos, dados pessoais, snapshots de produto ou relatórios de projetos específicos neste repositório de skills.
 - Valide o frontmatter e os links depois de alterar uma skill.
-

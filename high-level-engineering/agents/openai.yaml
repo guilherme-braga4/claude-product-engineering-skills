@@ -1,0 +1,7 @@
+interface:
+  display_name: "High-Level Engineering Context"
+  short_description: "Map docs and code into engineering decisions"
+  default_prompt: "Use $high-level-engineering to understand the current project context from docs/ and code, then shape or review the high-level solution."
+
+policy:
+  allow_implicit_invocation: true

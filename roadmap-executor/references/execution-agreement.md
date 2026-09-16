@@ -1,6 +1,6 @@
 # Acordo de execução
 
-Leia antes de iniciar ou ao detectar uma mudança material no alcance autorizado. Aproveite instruções e respostas existentes. Pergunte escolhas ainda necessárias em um grupo conciso; não peça confirmação ritual do que já foi autorizado.
+Leia antes de iniciar ou ao detectar uma mudança material no alcance autorizado. Reutilize o acordo e as respostas de `roadmap-executor-pre-check-deps`. A preparação concentra as perguntas iniciais; o executor consolida as escolhas e resolve apenas omissões concretas que afetem o trabalho. Não peça confirmação ritual do que já foi autorizado.
 
 ## Escolhas iniciais
 
@@ -19,7 +19,9 @@ Explicite ao usuário quais gates originalmente humanos serão delegados. Use o 
 
 - PRD e Roadmap: caminhos canônicos, revisão aprovada e evidência da aprovação.
 - Outros documentos que governam a execução e suas revisões.
+- Relatório de pre-check ou handoff equivalente: caminho, revisão, veredito, evidências e base examinada.
 - Alcance e regra de avanço entre fases.
+- Continuidade possível no trecho e checkpoints humanos/externos identificados antes de implementar.
 - Revisor, gates delegados e gates reservados ao humano.
 - Estratégia e destinos de Git; ações de publicação autorizadas, se houver.
 - Ambiente de validação, URLs e identificadores não secretos de contas/conexões.

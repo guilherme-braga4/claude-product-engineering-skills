@@ -9,6 +9,7 @@
 - RN/UC/RF e Qualidades tocados: [IDs / §6.X]
 - Arquitetura e RNF-T: [referências existentes ou registro técnico equivalente]
 - Acordo de execução: [referência, revisor e gates delegados]
+- Pre-check: [referência e pré-requisitos desta fase; dependências internas já entregues]
 - Pré-condições verificáveis: [condições e evidências]
 - Branch/worktree de trabalho e destino de integração: [referências]
 

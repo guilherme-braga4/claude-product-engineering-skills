@@ -1,25 +1,27 @@
 ---
 name: roadmap-executor
-description: "Execute an approved PRD and roadmap iteratively, planning one phase at a time, implementing, reviewing, and validating the running product through its UI, APIs, database, and tests. Use to start or resume roadmap execution with an agreed scope and review policy."
+description: "Execute a preflighted, approved PRD and roadmap iteratively, planning one phase at a time, implementing, reviewing, and validating the running product through its UI, APIs, database, and tests. Use to start or resume execution with an agreed scope and review policy; route unresolved preparation to roadmap-executor-pre-check-deps."
 ---
 
 # Roadmap Executor
 
-Conduza a execução de uma iniciativa refinada e aprovada. Planeje uma fase por vez, implemente, obtenha evidências, corrija falhas e avance até o limite autorizado.
+Conduza a execução de uma iniciativa refinada, aprovada e preparada. Planeje uma fase por vez, implemente, obtenha evidências, corrija falhas e avance até o limite autorizado. O scan completo de pré-requisitos pertence à `roadmap-executor-pre-check-deps`; aqui, consuma seu handoff e mantenha a continuidade da implementação.
 
-## 1. Verifique prontidão antes de implementar
+## 1. Receba o pre-check e confira sua validade
 
-1. Leia as instruções locais e identifique os documentos canônicos. PRD e Roadmap aprovados são obrigatórios; templates com placeholders não equivalem a documentos aprovados.
-2. Leia Discovery, Brain Dump e ARCH AS-IS/TO-BE quando existirem. Hipóteses do Brain Dump não equivalem a decisões aprovadas. O AS-IS descreve comportamento observado; o TO-BE define o destino.
-3. Confira escopo, critérios de aceite, dependências e aprovações do trecho pretendido. Não inicie com pontos em aberto que afetem sua execução. Apresente lacunas concretas para refinamento, sem implementar com suposições de produto.
-4. Inspecione o código e os recursos necessários para executar e validar o projeto. Identifique comandos, serviços, dados de teste, acesso à interface, APIs e banco aplicáveis. Siga [validação do produto em execução](references/runtime-validation.md).
-5. Procure um acordo e estado de execução existentes. Reutilize autorizações compatíveis com o escopo atual; não repita perguntas já respondidas.
+1. Leia as instruções locais e identifique PRD, Roadmap e base aprovada. Localize o relatório de `roadmap-executor-pre-check-deps` informado pelo usuário ou referenciado no acordo/estado, inclusive quando ainda estiver no arquivo de plano do runtime. Templates não equivalem a aprovação.
+2. O relatório deve cobrir todo o trecho autorizado, ter veredito PRONTO e registrar evidências, decisões, dependências internas, checkpoints e autoridade. Relatório PENDENTE/INCONCLUSIVO não libera implementação. Sem relatório suficiente, encaminhe a preparação à `roadmap-executor-pre-check-deps` em Plan mode antes de implementar; leia seu SKILL.md quando disponível. Se ausente, informe a entrada necessária sem fingir que o scan ocorreu ou instalar ferramentas automaticamente.
+3. Faça uma conferência curta da validade: escopo/revisões, estado real do Git e recursos voláteis relevantes. Reutilize as evidências válidas e as respostas já dadas. Não repita o scan inteiro nem reabra decisões por trocar de sessão. Mudanças materiais voltam à pré-checagem apenas nas linhas afetadas.
+4. Leia Discovery, Brain Dump e arquitetura conforme a tarefa exigir. Hipóteses não viram decisões aprovadas. Use a receita de ambiente/validação do relatório; siga [validação do produto em execução](references/runtime-validation.md) durante a implementação.
+5. Recupere o acordo e estado existentes. Se o relatório estiver apenas no artefato de plano, persista uma cópia identificada no local canônico do projeto quando o modo e o escopo já permitirem, sem modificar a versão aprovada. Registre a referência no acordo/estado.
 
-O TaskPlan não é pré-requisito de entrada. Sua criação detalha decisões aprovadas. Arquitetura formal é opcional: se faltar, use registros técnicos e de rastreabilidade existentes ou crie um registro proporcional antes de implementar. Uma decisão substantiva ainda pendente exige refinamento; não invente seções de ARCH nem métricas de aceite.
+**Execuções já iniciadas antes deste pre-check:** não resete entregas nem recomece a fase para criar um documento novo. Um conjunto existente de acordo, TaskPlan, evidências e estado pode servir de handoff equivalente se comprovar os mesmos pré-requisitos. Registre a equivalência e revalide o necessário; lacunas reais do trabalho restante voltam à pré-checagem. Ausência de um nome de arquivo específico não é bloqueio por si só.
+
+O TaskPlan não é pré-requisito de entrada. Sua criação detalha decisões aprovadas. Arquitetura formal é opcional: use os registros técnicos e de rastreabilidade definidos na preparação. Uma decisão substantiva pendente volta ao pre-check; não invente seções de ARCH nem métricas de aceite. Componentes a construir pelo próprio Roadmap são dependências internas sequenciadas, não recursos que obrigatoriamente precisavam existir antes do início.
 
 ## 2. Estabeleça o acordo de execução
 
-Use [acordo de execução](references/execution-agreement.md) para resolver apenas escolhas ainda indefinidas: alcance, checkpoints, revisão, ações de Git, ambientes e validações permitidas.
+Use [acordo de execução](references/execution-agreement.md) para consolidar as escolhas já aprovadas no pre-check: alcance, checkpoints, revisão, ações de Git, ambientes e validações permitidas. Não faça outra rodada geral de permissões. Se uma escolha obrigatória foi omitida, registre a lacuna e resolva somente ela antes do trabalho dependente.
 
 Persista o acordo no projeto antes da primeira implementação. Autorizações continuam válidas após compactação, troca de branch ou reinício, desde que sua base, alcance e condições não tenham mudado. O acordo não altera permissões das ferramentas nem supera bloqueios do ambiente.
 
@@ -28,7 +30,7 @@ Se uma revisão humana for obrigatória nos documentos, só substitua os gates n
 ## 3. Planeje somente a fase executável atual
 
 1. Reconcile o estado real com o Roadmap. Selecione a próxima fase autorizada com dependências satisfeitas.
-2. Verifique as pré-condições e crie ou atualize o TaskPlan usando o template local; na ausência dele, use [o template desta skill](assets/TASKPLAN-TEMPLATE.md).
+2. Confira se as pré-condições registradas permanecem válidas e se as entregas internas das quais a fase depende foram comprovadas. Crie ou atualize o TaskPlan usando o template local; na ausência dele, use [o template desta skill](assets/TASKPLAN-TEMPLATE.md). Não repita a preparação integral a cada fase.
 3. Referencie RN/UC/RF e Qualidades do PRD, e RNF-T da arquitetura quando existirem. Não duplique requisitos ou recicle IDs. Delimite exclusões expressamente aprovadas.
 4. Defina tarefas revisáveis, aceite binário e como observar os efeitos relevantes no produto em execução. Arquivos esperados são orientações, não limitações artificiais à implementação.
 5. Não escreva TaskPlans de fases futuras. O aprendizado desta fase deve informar a próxima.
@@ -66,7 +68,7 @@ Ao retomar, releia o acordo, os documentos e o estado; confira Git, código, pro
 
 Esta skill define o procedimento; não inicia por si só um supervisor persistente. Após prontidão e acordo, formule uma condição de `/goal` para o trecho autorizado, incluindo os gates e checkpoints. Se o ambiente não permitir ativá-lo diretamente, forneça o comando ao usuário sem alegar que o loop foi ativado. `/goal` não reinicia um processo encerrado nem substitui a validação independente.
 
-Corrija autonomamente problemas técnicos dentro do acordo. Se descobrir algo que invalide uma decisão aprovada, exija novo acesso ou exceda a autorização, registre o bloqueio e solicite somente a decisão necessária. Continue apenas trabalho independente autorizado. Não enfraqueça requisitos, pule fases dependentes ou amplie escopo para contornar um bloqueio.
+Corrija autonomamente falhas de implementação/testes dentro do acordo: elas fazem parte da iteração e não justificam retornar ao planejamento geral. Um componente ainda não construído, mas previsto e sequenciado no Roadmap, também pertence à execução. Checkpoints humanos registrados são pausas previstas. Se surgir um pré-requisito externo ausente, contrato incompatível ou descoberta que invalide decisão aprovada, registre o delta no relatório e retorne à `roadmap-executor-pre-check-deps` apenas para o trecho afetado. Continue trabalho independente autorizado enquanto possível. Não enfraqueça requisitos, pule fases dependentes ou amplie escopo para contornar um bloqueio.
 
 Pare no limite acordado, no checkpoint humano, em bloqueio sem trabalho independente ou ao atingir um limite de execução configurado. Esses estados não significam conclusão. Considere o trecho concluído apenas com seus gates satisfeitos; declare o Roadmap completo somente se todo o seu escopo aprovado e a validação global do sistema integrado tiverem sido atendidos.
 

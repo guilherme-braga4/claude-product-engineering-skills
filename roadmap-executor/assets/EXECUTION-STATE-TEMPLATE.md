@@ -7,8 +7,10 @@
 - PRD aprovado: [caminho / revisão / referência de aprovação]
 - Roadmap aprovado: [caminho / revisão / referência de aprovação]
 - Documentos complementares: [referências]
+- Pre-check ou handoff equivalente: [caminho / revisão / base / veredito; mudanças posteriores que exigem revalidar]
 - Acordo de execução: [caminho canônico]
 - Alcance autorizado: [fases]
+- Continuidade prevista: [contínua no trecho / checkpoints acordados]
 - Checkpoints e revisão: [regras / agente / gates humanos ou delegados]
 
 ## Posição atual

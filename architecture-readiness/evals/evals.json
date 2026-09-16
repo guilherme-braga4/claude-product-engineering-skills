@@ -1,0 +1,84 @@
+{
+  "skill_name": "architecture-readiness",
+  "evals": [
+    {
+      "id": 1,
+      "name": "novo-snapshot-delta-esperado",
+      "prompt": "Use architecture-readiness individualmente num repositório temporário isolado. Prepare o cenário mínimo: PRD vigente com RN01 'não cobrar duas vezes o mesmo pedido', UC01 'confirmar pagamento', RF01 'confirmar pagamento uma vez' e RF02 'exportar histórico' marcado NOVO; qualidade §6.1 'cliente sabe se o pagamento terminou'. O único código atual é uma função que cobra sem deduplicação; não há exportação nem ARCHs. O Readiness R-01 está Não pronto, aponta F-01 para RN01 e F-02 para RF02, com lotes L-01 r1 para deduplicação e L-02 r1 para exportação; a falta de evidência de §6.1 aparece como F-03 sem lote. Fixe essa base no cenário e gere os artefatos. Não execute remediações. Não invente decisão ou limiar de qualidade aprovado.",
+      "expected_output": "Snapshot completo como proposta ou explicitamente parcial se definição essencial estiver ausente; AS-IS honesto, TO-BE integral, matriz com todos os requisitos, lotes existentes reutilizados e ação/pacote de validação para F-03. RF02 ausente não abre conflito documental por si só.",
+      "files": [],
+      "expectations": [
+        "Gera snapshot com data, identidade R-01, manifesto, ARCHs, relatório, matriz e registro de inconsistências.",
+        "RN01, UC01, RF01, RF02 e §6.1 aparecem na rastreabilidade; não omite a capacidade ainda inexistente.",
+        "Reutiliza R-01/L-01/r1 e R-01/L-02/r1, sem duplicar aprovação para o mesmo trabalho.",
+        "Distingue proposta de RNF de meta aprovada; testes futuros não recebem aprovação antecipada.",
+        "Preserva código e PRD e não transforma proposta arquitetural em prontidão positiva."
+      ]
+    },
+    {
+      "id": 2,
+      "name": "conflitos-plan-uma-q-por-vez",
+      "prompt": "Use architecture-readiness individualmente em cenário temporário. O PRD exige RN01 cobrança única e RN02 cancelamento permitido antes da confirmação. ARCHITECTURE-AS-IS.md afirma que retries podem cobrar de novo e ARCHITECTURE-TO-BE.md proíbe todo cancelamento. Readiness R-02 documenta ambos os conflitos com fontes, sem decisão do usuário. Mapeie a base e prepare a proposta; ainda não respondi nenhuma questão. As ferramentas e o modo disponíveis são os reais desta sessão.",
+      "expected_output": "Registra as duas inconsistências e inicia a rodada por uma Q em Plan mode quando disponível. Sem acesso ao modo/ferramenta, comunica a limitação e pede a ativação/fallback sem simular respostas. Preserva os canônicos dependentes e bloqueia fechamento da proposta.",
+      "files": [],
+      "expectations": [
+        "Registra cada conflito PRD ↔ ARCH, com evidência, impacto, alternativas e recomendação.",
+        "Apresenta uma questão por vez e aguarda resposta; não decide automaticamente que um documento está errado.",
+        "Não inventa AskUserQuestions nem afirma que entrou em Plan mode sem ferramenta real.",
+        "Não altera PRD ou ARCH dependente antes das decisões; não libera desenvolvimento dependente."
+      ]
+    },
+    {
+      "id": 3,
+      "name": "atualizacao-canonicos-historico",
+      "prompt": "Use architecture-readiness num cenário temporário individual. Há ARCHs canônicos em docs/design/ARCHITECTURE-AS-IS.md e ARCHITECTURE-TO-BE.md, um snapshot S-01 finalizado ligado ao Readiness R-01 e PRD com RN01, UC01 e RF01 inalterados. A nova avaliação R-03 é Pronto e comprova que a implementação atual corresponde ao antigo TO-BE, sem achados. Produza o snapshot R-03 e atualize os canônicos. As fontes não têm conflitos. Não autorizei refatorações.",
+      "expected_output": "Novo snapshot registra a base R-03, atualiza os canônicos nos caminhos existentes, conserva backups e snapshot S-01, apresenta requisitos mantidos com validação e nenhum pacote artificial.",
+      "files": [],
+      "expectations": [
+        "Não cria ARCHs canônicos concorrentes em docs/architecture/.",
+        "Preserva byte a byte o snapshot finalizado e os conteúdos anteriores dos canônicos em fontes históricas.",
+        "Não herda aprovação do TO-BE anterior para uma nova proposta.",
+        "Gera matriz mesmo sem delta e não inventa ações para preencher relatório."
+      ]
+    },
+    {
+      "id": 4,
+      "name": "base-pre-readiness-irrecuperavel",
+      "prompt": "Use architecture-readiness individualmente em cenário temporário. Readiness R-04 avaliou o commit A com mudanças locais não capturadas; o checkout atual está em B com uma correção posterior. O PRD está disponível, mas as mudanças locais de A não podem ser recuperadas. O relatório antigo cita apenas um resultado de teste sem os arquivos avaliados. Gere o que puder sem inventar a fotografia histórica.",
+      "expected_output": "Entrega parcial, distingue base avaliada e checkout atual, identifica as afirmações não verificáveis e pede recuperação da base ou uma nova avaliação acordada. Não chama B de pré-Readiness.",
+      "files": [],
+      "expectations": [
+        "Commit A sozinho não é tratado como a base completa com mudanças locais.",
+        "Não usa código B ou teste histórico como evidência atual da base R-04.",
+        "Não faz checkout/reset destrutivo nem inventa hashes.",
+        "Mantém proposta dependente bloqueada e explicita a limitação temporal."
+      ]
+    },
+    {
+      "id": 5,
+      "name": "paridade-exclusao-e-acao-orfa",
+      "prompt": "Use architecture-readiness individualmente para revisar uma proposta num cenário temporário. PRD contém RN01, UC01, RF01 no escopo, RF02 como WON'T e qualidade §6.1. A proposta omite UC01 da matriz de testes, inclui RNF-T01 sem qualidade de origem e ENG-09 'migrar para microserviços' sem necessidade de Produto ou achado Readiness. A matriz apresenta 100% apenas contando RF01. Reconcile e prepare a entrega sem alterar requisitos.",
+      "expected_output": "Detecta cobertura enganosa, inclui inventário integral com RF02 explicitamente excluído, restaura paridades e trata RNF/ação sem âncora como proposta inconsistente, sem inventar requisitos para justificá-los.",
+      "files": [],
+      "expectations": [
+        "Exibe denominadores total, em escopo e excluído, e UC01 faltante.",
+        "RF02 permanece visível sem obrigação de implementação ou teste de execução nesta iniciativa.",
+        "Não mantém RNF-T01 órfão nem legitima ENG-09 sem fonte/decisão.",
+        "Lista verificações falhas/não verificáveis até que as relações estejam reconciliadas."
+      ]
+    },
+    {
+      "id": 6,
+      "name": "retomada-sem-recursao-sem-aprovacao-inferida",
+      "prompt": "Retome architecture-readiness individualmente num cenário temporário com snapshot S-06 em andamento para R-06, checkpoint consistente e decisão desta conversa que respondeu Q-001 mantendo o PRD. Há um lote R-06/L-01/r1 já aprovado nesta conversa para acrescentar validação local. O TO-BE agora propõe também migração de dados em produção, não abrangida pela aprovação. Conclua a proposta documental. Não iniciei uma nova avaliação nem aprovei a migração.",
+      "expected_output": "Retoma S-06 sem nova pasta, preserva decisão de Q-001 e autorização limitada, apresenta ampliação como pacote/revisão pendente e não executa trabalho durante autoria nem chama Readiness recursivamente.",
+      "files": [],
+      "expectations": [
+        "Revalida base e checkpoint e reutiliza o snapshot em andamento.",
+        "Não repete a Q já resolvida ou a aprovação do escopo inalterado.",
+        "Não estende a aprovação de validação local à migração em produção.",
+        "Finaliza documentos com pacotes finitos e preserva a fronteira entre autoria e execução."
+      ]
+    }
+  ]
+}

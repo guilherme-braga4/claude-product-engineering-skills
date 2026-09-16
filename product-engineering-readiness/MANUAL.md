@@ -43,12 +43,15 @@ A skill descobre o que já estiver no projeto. Sem definição suficiente do lan
 
 ## O que esperar
 
+A avaliação inclui uma etapa pós-diagnóstico com `architecture-readiness`, quando instalada e dentro do recorte solicitado. Ela usa a base avaliada e o PRD para criar um snapshot datado com AS-IS, TO-BE, relatório de mudanças e matriz Produto ↔ Engenharia, atualizando ARCHs existentes com histórico preservado. Conflitos PRD ↔ ARCH são tratados em Plan mode, uma questão por vez. Isso prepara a aprovação do desenvolvimento; não altera o veredito nem implementa os lotes automaticamente. Sem a skill ou entradas necessárias, a auditoria informa a etapa pendente.
+
 A resposta principal traz:
 
 1. prontidão e cobertura separadas;
 2. motivos determinantes e limitações;
 3. lotes relacionados por causa, resultado ou dependência;
 4. uma instrução curta para aprovação.
+5. links do snapshot, relatório e matriz de arquitetura, ou a pendência dessa etapa.
 
 Exemplo:
 
@@ -83,4 +86,3 @@ docs/product-engineering-readiness/
 ## Antes de compactar
 
 Use [CONTEXT-COMPACTION.md](CONTEXT-COMPACTION.md) durante revisões longas e antes de executar `/compact`. O checkpoint deve refletir lotes aprovados, concluídos e pendentes sem transformar registros documentais em novas autorizações.
-

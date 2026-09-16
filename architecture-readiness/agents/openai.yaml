@@ -1,0 +1,4 @@
+interface:
+  display_name: "Architecture Readiness"
+  short_description: "Arquitetura e ações conectadas ao PRD após Readiness"
+  default_prompt: "Use $architecture-readiness após o Readiness para atualizar os ARCHs e gerar um snapshot com relatório e matriz Produto ↔ Engenharia para aprovação."

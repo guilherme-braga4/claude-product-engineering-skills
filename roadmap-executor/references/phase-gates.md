@@ -19,6 +19,9 @@ Leia ao planejar e fechar cada fase. Os critérios aprovados do projeto governam
 
 ## Rastreabilidade
 
+- Na Valeti, cada item do ROADMAP tem Task pai e cada item do TASKPLAN tem Subtask validada via Rovo MCP antes de produzir código; a branch usa `<prefixo>/<CHAVE-DA-TASK-PAI>` e é compartilhada pelos itens daquele pai/repositório.
+- O agente responsável pelo Jira reconciliou somente os cards mapeados atribuídos ao usuário confirmado. Status/coluna foram verificados após as transições; falhas e cards de outro responsável estão registrados como pendências, sem reatribuição ou falsa conclusão. DONE do pai exige todos os gates, não apenas uma Subtask concluída.
+
 - Cada RN/UC/RF e Qualidade tocados pela fase está na matriz com evidência de cumprimento; RNF-T referencia sua Qualidade quando existe arquitetura formal.
 - Se houver ARCH TO-BE, preserve a matriz §8.1, a paridade com §2 e as relações com RNF-T de §9. Sem ARCH, use o registro canônico equivalente definido na preparação.
 - Nenhum requisito tocado fica sem verificação, falhando ou em andamento. Um mecanismo alternativo apenas descrito não é validação executada.

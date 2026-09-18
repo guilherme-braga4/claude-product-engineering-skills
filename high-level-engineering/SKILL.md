@@ -83,6 +83,8 @@ If code and specs disagree, investigate before choosing which one to change. Do 
 
 ## Deliver an engineering-ready result
 
+For Valeti code-producing work explicitly included in the mission (including feasibility prototypes, tests, scripts, or implementation fixes), first read and apply [valeti-jira-delivery](../valeti-jira-delivery/SKILL.md). Map the ROADMAP item to a Jira parent Task through Rovo MCP, then each TASKPLAN item to a Subtask before writing code. Use `<prefix>/<PARENT-TASK-KEY>` for the shared delivery branch and assign an agent to reconcile only the confirmed user's mapped Jira cards at completion. Architecture/specification work alone does not create cards or authorize implementation; include the protocol in its implementation handoff.
+
 Shape the output to the complexity of the mission, but make it sufficient for another engineer to act without rediscovering the architecture. Include the relevant items below:
 
 - the product problem and acceptance criteria;

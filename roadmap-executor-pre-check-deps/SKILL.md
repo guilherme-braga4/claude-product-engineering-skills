@@ -26,6 +26,8 @@ Prepare o trecho aprovado do Roadmap para execução contínua. Percorra o camin
 
 Arquitetura formal e TaskPlans futuros não são pré-requisitos universais. Sem ARCH, use registros técnicos existentes e identifique apenas decisões realmente necessárias. O TaskPlan continua sendo produzido uma fase por vez pelo executor.
 
+Na Valeti, leia [valeti-jira-delivery](../valeti-jira-delivery/SKILL.md) para preparar o handoff: confira por leitura a conexão/identidade do Rovo MCP, projeto/Board, tipos Task/Subtask, cards existentes, prefixos do Bitbucket e agente responsável pela sincronização. Não crie cards, TASKPLANs futuros ou branches em Plan mode. Cards ainda não criados são trabalho sequenciado da execução, com gate obrigatório antes de código; acesso obrigatório ausente é pendência externa. Qualquer saneamento que produza código fora do Plan mode também precisa de item do ROADMAP, Task pai, TASKPLAN/Subtask e branch do pai antes de começar.
+
 ## 2. Percorra cada entrega como se fosse executá-la
 
 Leia [o roteiro de inspeção](references/dependency-scan.md). Para cada entrega/pacote, percorra: requisitos → pontos de código e contratos afetados → dependências → build/testes → produto em execução → revisão → integração/publicação → aceite externo. Registre evidências concretas, não apenas a existência de arquivos.

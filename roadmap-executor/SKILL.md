@@ -29,6 +29,8 @@ Se uma revisão humana for obrigatória nos documentos, só substitua os gates n
 
 ## 3. Planeje somente a fase executável atual
 
+Em projetos da Valeti, leia e aplique [valeti-jira-delivery](../valeti-jira-delivery/SKILL.md) antes de planejar a implementação. Primeiro reconcilie cada item do ROADMAP autorizado com sua Task pai via Rovo MCP; depois leia/crie o TASKPLAN e vincule cada item a uma Subtask desse pai. O nome do item do ROADMAP é o summary da Task. Não produza código nem crie branch sem os cards verificados. Se o protocolo não estiver instalado, localize a fonte versionada ou informe a dependência antes de implementar; não omita o gate.
+
 1. Reconcile o estado real com o Roadmap. Selecione a próxima fase autorizada com dependências satisfeitas.
 2. Confira se as pré-condições registradas permanecem válidas e se as entregas internas das quais a fase depende foram comprovadas. Crie ou atualize o TaskPlan usando o template local; na ausência dele, use [o template desta skill](assets/TASKPLAN-TEMPLATE.md). Não repita a preparação integral a cada fase.
 3. Referencie RN/UC/RF e Qualidades do PRD, e RNF-T da arquitetura quando existirem. Não duplique requisitos ou recicle IDs. Delimite exclusões expressamente aprovadas.
@@ -41,7 +43,7 @@ Em Agent Teams, confirme o PRD antes de decompor ou delegar; cada participante l
 
 Para cada tarefa:
 
-1. Preserve alterações preexistentes e confira o estado do Git. Use a estratégia acordada de branches/worktrees; nunca descarte trabalho para trocar de branch. Em trabalho paralelo, use worktrees separados e ownership explícito.
+1. Preserve alterações preexistentes e confira o estado do Git. Use a estratégia acordada de branches/worktrees; nunca descarte trabalho para trocar de branch. Na Valeti, use `<prefixo>/<CHAVE-DA-TASK-PAI>` (ex.: `feature/VWAD-1234`), compartilhada pelos itens do TASKPLAN; não crie branch/PR por Subtask. Para paralelismo dentro do mesmo pai/repositório, siga o isolamento e a integração serial de `valeti-jira-delivery`, sem checkout concorrente da mesma branch. Nas demais execuções, use worktrees separados e ownership explícito conforme o acordo.
 2. Implemente o comportamento referenciado e testes capazes de detectar sua ausência ou regressão.
 3. Execute as verificações automatizadas pertinentes e o produto real quando o aceite envolver comportamento em execução. Siga [runtime-validation.md](references/runtime-validation.md) para UI, API, DB, logs e evidências.
 4. Compare resultados esperados com observados. Investigue a causa, corrija e repita o cenário que falhou, ampliando testes conforme o impacto. Registre tentativas úteis para evitar repetir abordagens sem progresso.
@@ -54,6 +56,8 @@ O revisor deve ter contexto próprio e conhecer os critérios originais. Não fo
 
 Use [gates de fase](references/phase-gates.md), preservando os requisitos mais específicos do projeto. Integre conforme autorizado e valide o estado integrado. Uma aprovação anterior não cobre alterações posteriores automaticamente.
 
+Na Valeti, o agente responsável pela sincronização reconcilia pai e Subtasks do trecho com as evidências e transições reais do Board, conferindo o assignee antes de cada escrita. Atualiza somente os cards do usuário confirmado, inclusive ao encerrar com bloqueio ou checkpoint. Review/merge pendentes não viram DONE. Registre status/coluna confirmados e pendências remotas antes de declarar o fechamento.
+
 Após o gate passar, registre retrospectiva e próxima ação. No modo por fase, aguarde a liberação acordada. No modo contínuo, crie o próximo TaskPlan sem pedir a mesma autorização novamente.
 
 ## 6. Persista e retome
@@ -64,11 +68,13 @@ Atualize estado em checkpoints relevantes: fase/tarefa, versões dos documentos,
 
 Ao retomar, releia o acordo, os documentos e o estado; confira Git, código, processos, dados e evidências antes de reconstruir a fila. Resultado de teste antigo não comprova o código atual.
 
+Na Valeti, recupere também o mapeamento ROADMAP → Task → TASKPLAN → Subtask → branch/PR e releia os cards pelo Rovo MCP. Preserve suas chaves; não recrie cards ou sobrescreva mudanças humanas a partir de estado antigo.
+
 ## 7. Continuidade e encerramento
 
 Esta skill define o procedimento; não inicia por si só um supervisor persistente. Após prontidão e acordo, formule uma condição de `/goal` para o trecho autorizado, incluindo os gates e checkpoints. Se o ambiente não permitir ativá-lo diretamente, forneça o comando ao usuário sem alegar que o loop foi ativado. `/goal` não reinicia um processo encerrado nem substitui a validação independente.
 
-Corrija autonomamente falhas de implementação/testes dentro do acordo: elas fazem parte da iteração e não justificam retornar ao planejamento geral. Um componente ainda não construído, mas previsto e sequenciado no Roadmap, também pertence à execução. Checkpoints humanos registrados são pausas previstas. Se surgir um pré-requisito externo ausente, contrato incompatível ou descoberta que invalide decisão aprovada, registre o delta no relatório e retorne à `roadmap-executor-pre-check-deps` apenas para o trecho afetado. Continue trabalho independente autorizado enquanto possível. Não enfraqueça requisitos, pule fases dependentes ou amplie escopo para contornar um bloqueio.
+Corrija autonomamente falhas de implementação/testes dentro do acordo: elas fazem parte da iteração e não justificam retornar ao planejamento geral. Um componente ainda não construído, mas previsto e sequenciado no Roadmap, também pertence à execução. Checkpoints humanos registrados são pausas previstas. Se surgir um pré-requisito externo ausente, contrato incompatível ou descoberta que invalide decisão aprovada, registre o delta como nova revisão do relatório, preservando a aprovada, e retorne à `roadmap-executor-pre-check-deps` apenas para o trecho afetado. Continue trabalho independente autorizado enquanto possível. Não enfraqueça requisitos, pule fases dependentes ou amplie escopo para contornar um bloqueio.
 
 Pare no limite acordado, no checkpoint humano, em bloqueio sem trabalho independente ou ao atingir um limite de execução configurado. Esses estados não significam conclusão. Considere o trecho concluído apenas com seus gates satisfeitos; declare o Roadmap completo somente se todo o seu escopo aprovado e a validação global do sistema integrado tiverem sido atendidos.
 

@@ -4,13 +4,15 @@ Leia na preparação e ao planejar cenários que exercitam o sistema. A escolha 
 
 ## Preparar um ambiente reproduzível
 
+Parta da receita de ambiente e validação verificada no relatório de `roadmap-executor-pre-check-deps`. Rediscubra apenas o que mudou desde a base examinada ou não foi coberto pelo relatório.
+
 1. Descubra a receita real em documentação e configuração: dependências, build, migrações, serviços, workers, comandos de início, portas e dados de teste. Use versões e procedimentos do projeto.
 2. Confirme o destino efetivo da aplicação e dos clientes de DB/API antes de executar ações. Confira nomes de ambiente e banco sem expor credenciais.
 3. Reutilize serviços saudáveis compatíveis com a revisão em teste. Caso precise iniciar serviços, registre comando, PID/sessão, portas e logs. Aguarde prontidão observável; tempo de espera fixo não comprova que a aplicação subiu.
 4. Identifique ferramentas existentes: automação de navegador, Playwright ou equivalente, cliente HTTP como curl ou coleção Postman, CLI/driver/conector do banco. Não alegue acesso porque uma ferramenta foi mencionada. Instalação ou configuração segue as permissões do ambiente e o acordo.
 5. Prepare contas e fixtures identificáveis por execução. Considere jobs assíncronos e integrações que possam disparar efeitos fora do ambiente de teste.
 
-Se faltar um recurso necessário ao aceite, resolva a preparação dentro do acordo ou apresente o bloqueio antes de implementar o trecho dependente. Não substitua silenciosamente execução real por mocks.
+Se faltar um recurso necessário ao aceite, resolva a preparação dentro do acordo; se for pré-requisito externo novo, registre o delta e devolva-o à pré-checagem antes de implementar o trecho dependente. Não substitua silenciosamente execução real por mocks.
 
 ## Planejar um cenário por comportamento relevante
 

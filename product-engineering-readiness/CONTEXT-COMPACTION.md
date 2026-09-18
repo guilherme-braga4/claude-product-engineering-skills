@@ -21,6 +21,7 @@ Specifically preserve:
 - files/components affected
 - implementation already completed
 - current git/branch/commit state
+- for Valeti delivery: ROADMAP/parent Task and TASKPLAN/Subtask mappings, parent branch/PR, confirmed user accountId, Jira synchronization agent, last verified statuses/columns and pending or uncertain writes
 - tests executed and their results
 - known failures, gaps and technical debt discovered
 - assumptions that still need validation
@@ -55,6 +56,7 @@ Prioritize:
 - unresolved questions, blockers, risks, and remaining work
 - references and paths to canonical project artifacts, specs, plans, checkpoints, and other persisted sources of truth
 - relevant git/branch/worktree state when applicable
+- pointer to Valeti Jira mappings and synchronization state; re-read assignees/statuses before writes and search before retrying uncertain card creation
 - important verification or test status that affects the next steps
 
 Treat the current filesystem, repository, persisted documentation, and committed project state as canonical. Prefer references to persisted artifacts over reproducing their contents.
@@ -74,4 +76,3 @@ Discard:
 
 Preserve enough context to understand why the project is in its current state, what remains to be done, and how to continue without repeating previous discovery or reopening settled decisions.
 ```
-

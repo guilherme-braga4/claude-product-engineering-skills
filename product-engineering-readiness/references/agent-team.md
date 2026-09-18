@@ -15,6 +15,7 @@ Antes de decompor a missão em tarefas ou iniciar participantes, confirme um PRD
 - Lead: missão, base, critérios, unidades, dependências, ownership de arquivos, consolidação de achados, evidências e veredito; contato para aprovações.
 - Product Engineers: unidades por jornada/domínio. Cada participante cruza produto e engenharia; rastreia entradas até efeitos e valida cenários. Evite separar “quem só lê PRD” e “quem só lê código” sem cruzamento das evidências.
 - Atribua validação das fronteiras compartilhadas explicitamente; nenhuma integração pode ficar sem responsável porque está entre unidades.
+- Na execução de código da Valeti, identifique um agente responsável pela sincronização Jira (pode ser o Lead). Ele serializa as escritas de status/coluna somente dos cards mapeados atribuídos ao usuário confirmado, conforme [valeti-jira-delivery](../../valeti-jira-delivery/SKILL.md). Em execução individual, o executor assume esse papel explicitamente.
 
 Use a tasklist interna disponível no time para claim, dependências e estado. Dê um dono a cada arquivo; só o Lead consolida arquivos centrais. `ACTIONS.md` registra decisões/resultados. `docs/TASKS.md`, quando espelho automático, é acompanhamento humano e não mecanismo de execução.
 
@@ -29,9 +30,12 @@ Repos e fontes acessíveis:
 Dependências e consumidores a verificar:
 Diretório/arquivos de saída sob sua responsabilidade:
 Limites: fase de revisão ou IDs/revisões dos lotes já aprovados:
+Valeti, se aplicável: ROADMAP/Task pai, TASKPLAN/Subtasks, branch do pai, accountId confirmado e agente responsável pelo Jira:
 Entrega: cobertura, rastreabilidade, achados, evidências e limitações:
 ```
 
 Todos leem o PRD e instruções aplicáveis; não dependa do histórico do Lead. Durante review, participantes não corrigem código/specs. Durante remediação, o Lead transmite exatamente o escopo aprovado e critérios de aceite; aprovação de um lote não é autorização para outros.
+
+Na Valeti, todos os escritores leem também o protocolo de entrega antes de código. Itens do mesmo pai/repositório compartilham a branch; use escrita serial ou worktrees detached com integração serial, nunca checkout simultâneo forçado da mesma branch ou branches nomeadas por Subtask/agente.
 
 O Lead reconcilia versões, fontes conflitantes, duplicações, fronteiras e cobertura antes do veredito. Não encerre apenas por receber resumos: confira evidências dos critérios e bloqueadores. Na retomada, reconstrua o estado a partir de arquivos e participantes ativos, não da suposição de que o time anterior foi restaurado.

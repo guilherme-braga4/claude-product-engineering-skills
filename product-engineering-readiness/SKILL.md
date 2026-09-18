@@ -106,4 +106,6 @@ Exemplos de resposta são instruções sugeridas, nunca aprovações recebidas. 
 
 Depois da aprovação, resolva os lotes e revisões identificados, execute apenas seus escopos na ordem das dependências, valide o resultado e atualize os achados e o veredito. Não peça novamente autorização já inequívoca. Ampliação material ou efeito novo requer revisão do lote para decisão; continue partes independentes autorizadas.
 
+Para lotes que produzam código da Valeti, aplique [valeti-jira-delivery](../valeti-jira-delivery/SKILL.md) antes de implementar: reutilize/crie o item do ROADMAP e sua Task pai via Rovo MCP, leia/crie o TASKPLAN e suas Subtasks. Lote aprovado não dispensa card prévio. Use a branch `<prefixo>/<CHAVE-DA-TASK-PAI>` para todos os itens daquele pai e designe o agente que sincronizará status/colunas somente dos cards atribuídos ao usuário confirmado. Durante a auditoria, apenas prepare esse mapeamento; não crie cards como efeito do diagnóstico.
+
 Sem achados materiais, encerre com o veredito e seus limites, sem fabricar remediações. Se houver bloqueio externo, entregue cobertura e ações concretas pendentes.

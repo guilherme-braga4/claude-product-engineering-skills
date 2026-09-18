@@ -42,6 +42,7 @@ Aceite e validação: cenários observáveis, comandos/ambiente previstos.
 Base: revisão/hash e premissas que precisam permanecer válidas.
 Decisão do usuário: pendente; após resposta, referência à mensagem e escopo aprovado.
 Execução: ações, alterações, resultados, evidências e impedimentos.
+Jira/Bitbucket na Valeti: item do ROADMAP / Task pai / TASKPLAN / Subtasks / branch e PR do pai / agente de sincronização; durante a proposta, vínculo planejado ou existente, sem criar cards.
 Próxima ação: instrução utilizável na conversa.
 ```
 
@@ -58,10 +59,12 @@ Estados: `proposto -> aprovado -> em execução -> em validação -> concluído`
 Depois da aprovação:
 
 1. Confira base e dependências. Mudança sem impacto material não exige nova aprovação; documente a checagem.
+   Na Valeti, antes de código, aplique [valeti-jira-delivery](../../valeti-jira-delivery/SKILL.md): leia/crie ROADMAP proporcional aos lotes aprovados, reconcilie uma Task pai por item, depois leia/crie TASKPLAN e Subtasks. Reutilize vínculos existentes; não transforme automaticamente cada lote em pai se vários pertencem ao mesmo item do ROADMAP. Só inicie código com os cards e a branch `<prefixo>/<CHAVE-DA-TASK-PAI>` verificados.
 2. Execute o escopo aprovado, preservando trabalho alheio. Verificações locais seguras necessárias ao lote fazem parte da execução.
 3. Valide os cenários de aceite e os consumidores afetados. Um patch escrito não encerra o lote.
 4. Atualize specs aprovadas em `docs/` do responsável, seguindo organização e rastreabilidade existentes. Evite duplicação e atualize referências relacionadas.
 5. Registre evidências, feche somente achados atendidos e reavalie o veredito. Evidência operacional ausente continua pendente.
+6. Na Valeti, o agente responsável pelo Jira reconcilia status e coluna do pai e de cada Subtask do trecho somente se atribuídos ao usuário confirmado, relendo assignee antes de cada escrita. Gates pendentes impedem DONE; registre resultados remotos confirmados, cards ignorados e falhas para retomada.
 
 Não repita pedido de autorização já inequívoca. Novo efeito externo, mudança de regra de negócio, expansão material, risco relevante novo ou premissa invalidada exigem revisão do lote para decisão. Continue trabalho independente autorizado.
 

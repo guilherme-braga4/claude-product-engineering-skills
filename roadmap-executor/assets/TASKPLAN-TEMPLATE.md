@@ -13,17 +13,30 @@
 - Pré-condições verificáveis: [condições e evidências]
 - Branch/worktree de trabalho e destino de integração: [referências]
 
+### Rastreabilidade Valeti (quando aplicável)
+
+- Item do ROADMAP / nome: [ID estável / summary da Task pai]
+- Task pai / URL / assignee confirmado: [chave retornada pelo Jira / link / accountId]
+- Rovo MCP / site / projeto / Board: [contexto verificado]
+- Branch compartilhada por pai/repositório: [prefixo/CHAVE-DA-TASK-PAI, ex.: feature/VWAD-1234]
+- Agente responsável pela sincronização Jira: [executor ou participante identificado]
+- Registro canônico de cards/transições: [referência; aplicar valeti-jira-delivery antes de código]
+
+Se a fase abranger mais de um item do ROADMAP, repetir o vínculo pai/branch por item. Não criar pai por Subtask nem branch por TASK.
+
 ## Tarefas
 
 ### TASK-01: [Verbo + objeto]
 
 - Sustenta: [IDs do PRD e decisões técnicas]
+- Jira na Valeti: [Subtask / URL / Task pai / assignee confirmado; verificar antes de código]
 - Dependências: [tarefas / condições]
 - Arquivos esperados: [orientação]
 - Aceite binário:
   - [ ] [comportamento verificável]
 - Verificação: [teste ou cenário real e resultado esperado]
 - Evidência: [referência ao resultado e à revisão de código validada]
+- Sincronização Jira na Valeti: [status/coluna observados / transição confirmada / pendência / agente / data]
 - Notas: [somente restrições não óbvias]
 
 [Repetir para as tarefas necessárias à fase.]
@@ -49,6 +62,7 @@
 - [ ] Estado, Discovery Log e decisões técnicas atualizados conforme aplicável.
 - [ ] Critério de sucesso da fase verificado de fora.
 - [ ] Revisões humanas obrigatórias realizadas, ou gates especificamente delegados revisados pelo agente identificado.
+- [ ] Na Valeti, agente responsável reconciliou Tasks/Subtasks mapeadas e atribuídas ao usuário, com status/coluna confirmados ou pendência explícita; pai não foi concluído com gates abertos.
 
 ## Rollback
 

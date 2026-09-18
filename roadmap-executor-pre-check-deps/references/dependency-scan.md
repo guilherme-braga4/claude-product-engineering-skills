@@ -25,6 +25,13 @@ Examine as áreas aplicáveis para cada entrega do trecho escolhido. Registre lo
 - Registre branches empilhadas, ordem de integração e responsáveis; se push/CI fazem parte do trecho, verifique acesso de leitura/configuração e identifique limites não comprováveis sem escrita.
 - Ausência de erro em `git status` não certifica build, testes ou permissões de publicação.
 
+## Jira e branches — Valeti
+
+- Leia [valeti-jira-delivery](../../valeti-jira-delivery/SKILL.md). Confirme por leitura Rovo MCP, usuário/accountId, site/projeto/Board, tipos Task/Subtask e metadados exigidos; não teste permissões criando cards em Plan mode.
+- Identifique vínculos existentes do ROADMAP com Tasks pais, responsáveis e duplicidades/ambiguidades; planeje criar os faltantes fora do Plan mode antes de código. TASKPLANs futuros e Subtasks ainda não planejadas são entregas internas sequenciadas, não lacunas externas.
+- Verifique prefixo, base e branches/PRs existentes no Bitbucket. Planeje `<prefixo>/<CHAVE-DA-TASK-PAI>` compartilhada por pai/repositório, inclusive para saneamento de código; não use branches por Subtask ou por agente.
+- Registre o agente responsável pela sincronização, limites de assignee, configuração real de status/colunas e gates de DONE. Acesso desconhecido continua não verificado; preparação não autoriza reatribuir issues, mudar workflow ou iniciar escrita.
+
 ## Runtime, dependências e infraestrutura
 
 - Versões reais de runtime e package manager, lockfile, binários locais, dependências nativas, arquitetura da máquina e imagens necessárias.

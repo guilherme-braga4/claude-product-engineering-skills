@@ -7,7 +7,8 @@
 - ROADMAP / revisão / trecho autorizado: [referência]
 - PRD / aceite / autorização de execução: [referências]
 - Rovo MCP / site / cloudId / projeto / Board: [identificadores sem credenciais]
-- Usuário confirmado / accountId: [identidade verificada na conexão da Valeti]
+- Identidade esperada: guilhermebraga@valeti.com / `712020:0da228fc-2e83-4136-98a1-6e3be14ae662` (ou substituição explicitamente solicitada pelo usuário)
+- Usuário observado / accountId / resultado da comparação: [consulta na conexão da Valeti; divergência ou identidade não comprovada bloqueia escrita]
 - Agente responsável pela sincronização: [executor ou participante real identificado]
 - Prefixo de branch / base por repositório: [convenção verificada]
 - Configuração de colunas/status: [consulta e momento; revalidar antes das transições]

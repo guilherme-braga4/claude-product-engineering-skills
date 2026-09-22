@@ -48,6 +48,8 @@ Próxima ação: instrução utilizável na conversa.
 
 Antes de pedir aprovação, faça a análise e a preparação permitidas até tornar a ação revisável. Durante review, guarde propostas/patches apenas nos artefatos da revisão, sem aplicá-los ao produto. Arquivos exatos ainda desconhecidos podem ser descobertos durante implementação dentro da fronteira apresentada; não use “corrigir tudo” como escopo.
 
+Na Valeti, propostas textuais e exemplos conceituais da auditoria são documentação. Gerar um patch de implementação aplicável ao produto conta como produção de código, mesmo salvo no relatório: só faça isso na execução autorizada, após os cards exigidos por `valeti-jira-delivery`. Durante a auditoria, descreva a correção e seu aceite sem usar um patch executável para contornar o gate.
+
 Na conversa, mostre ID/revisão, impacto, proposta, alcance, risco material, dependências e aceite em um resumo curto por lote. Links permitem aprofundar, mas detalhes essenciais à decisão não ficam escondidos no relatório.
 
 ## Aprovação e execução

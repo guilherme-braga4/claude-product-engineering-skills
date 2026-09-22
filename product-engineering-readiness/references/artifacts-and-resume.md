@@ -34,6 +34,8 @@ Mantenha lotes conforme o protocolo de aprovação, dependências, revisões, de
 
 Antes de interrupção/compactação e após cada lote de análise, registre execução/base, fase, unidades concluídas/pendentes/invalidadas, fontes bloqueadas, trabalho em andamento, decisões disponíveis na sessão e próxima ação. Inclua responsáveis por arquivos quando houver time. Diferencie aprovação pendente de bloqueio técnico.
 
+Na execução de código da Valeti, persista também os vínculos ROADMAP → Task pai → TASKPLAN → Subtasks, branch/PR e caminhos das worktrees, commits inclusive detached, identidade esperada e observada, agente responsável pela sincronização e status/coluna confirmados ou pendentes. Durante auditoria somente leitura, registre apenas vínculos existentes ou propostos, sem criar cards.
+
 ## Fechamento e reavaliação
 
 Confira caminhos não classificados, IDs duplicados, links inválidos, critérios sem estado, afirmações sem evidência e hashes indevidamente reutilizados. Atualize o índice somente depois de salvar os arquivos e conferir referências.
@@ -43,6 +45,8 @@ Finalize a revisão original como registro histórico. Para remediação, preser
 ## Retomada e aprovações
 
 Após fork, compactação ou interrupção, releia checkpoint e referências necessárias, confirme arquivos/estado real e revalide base, dependências e alterações concorrentes. Não pressuponha que processos ou teammates anteriores continuam ativos. Não repita ações concluídas; se uma operação externa tiver resultado incerto, inspecione seu estado antes de qualquer repetição.
+
+Para retomar lotes de código da Valeti, releia [valeti-jira-delivery](../../valeti-jira-delivery/SKILL.md). Confirme a identidade esperada, consulte via Rovo MCP os cards mapeados e seus assignees, parent e status atuais; revalide o gate antes de código e antes de cada escrita. Preserve chaves e vínculos, busque o resultado de criações incertas antes de repeti-las e não sobrescreva alterações humanas com o checkpoint antigo. Reconcilie as worktrees existentes sem movê-las, renomeá-las ou removê-las automaticamente. Falha de acesso mantém a sincronização pendente, sem alegar atualização bem-sucedida.
 
 Autorizações explícitas preservadas no contexto confiável da conversa continuam válidas para seu escopo. Se houver somente um registro em arquivo não verificável, apresente o lote concreto e solicite confirmação; não transforme esse registro em autorização. Preserve a proveniência para não pedir confirmação desnecessária em continuidade da mesma sessão.
 
